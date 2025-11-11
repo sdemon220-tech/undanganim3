@@ -1,69 +1,152 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Pernikahan Farid & Desi</title>
-<link rel="stylesheet" href="style.css" />
-<script defer src="script.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Noto Serif JP', serif;
+  background: linear-gradient(135deg,#fff6e5,#ffe8f0);
+  margin: 0; padding: 0; color: #333;
+  overflow-x: hidden;
+}
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('https://i.imgur.com/EVw2aHf.jpg') center/cover no-repeat;
+  color: white; position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content { position: relative; z-index: 1; }
+h1 { font-size: 3em; margin: 0; letter-spacing: 2px; }
+h2 { color: #d37d8a; margin-bottom: 15px; }
+section { padding: 60px 20px; text-align: center; }
+.countdown { font-size: 1.4em; color: #b44b61; margin-top: 10px; }
+.gallery {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px; justify-items: center; margin-top: 20px;
+}
+.gallery img {
+  width: 100%; max-width: 350px; border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+footer {
+  background: #fff; padding: 20px; text-align: center;
+  font-size: 0.9em; color: #777;
+}
+button {
+  background: #ffc107; border: none; padding: 10px 20px;
+  border-radius: 8px; color: #333; font-weight: 600;
+  cursor: pointer; margin: 10px;
+}
+/* Sakura animation */
+.sakura {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.sakura span {
+  position: absolute;
+  top: -10px;
+  background: pink;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: fall 10s linear infinite;
+}
+@keyframes fall {
+  0% {transform: translateY(0) rotate(0deg);}
+  100% {transform: translateY(100vh) rotate(360deg);}
+}
+</style>
 </head>
 <body>
-<audio autoplay loop>
-  <source src="theme_koto.wav" type="audio/wav">
-</audio>
 
-<header>
-  <h1>Farid & Desi</h1>
-  <p>Sabtu, 27 Desember 2025</p>
-</header>
+<div class="sakura" id="sakura"></div>
 
-<section class="intro">
-  <p>Dengan rahmat dan kasih sayang Tuhan Yang Maha Esa,<br>
-  Kami bermaksud menyelenggarakan pernikahan kami.<br><br>
-  Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu pada hari bahagia kami.</p>
+<div class="hero">
+  <div class="hero-content">
+    <h1>Farid & Desi</h1>
+    <p>“Bagaikan kelopak sakura yang bertemu angin, kami dipertemukan untuk saling melengkapi.”</p>
+    <p id="guest"></p>
+  </div>
+</div>
+
+<section>
+  <h2>Akad & Resepsi</h2>
+  <p><strong>Tanggal:</strong> Sabtu, 27 Desember 2025</p>
+  <p><strong>Waktu:</strong> 08.00 – Selesai</p>
+  <p><strong>Tempat Akad:</strong> Gedung Serbaguna Dasan Lekong</p>
+  <p><strong>Tempat Resepsi:</strong> Ranjang</p>
+  <div class="countdown" id="countdown"></div>
 </section>
 
-<section class="countdown">
-  <h2>Menuju Hari Bahagia</h2>
-  <div id="timer"></div>
-</section>
-
-<section class="cerita">
+<section>
   <h2>Cerita Cinta Kami</h2>
-  <div class="story">
-    <img src="photo1.jpeg" alt="Kejutan Manis">
-    <h3>Kejutan Manis 🎂</h3>
-    <p>Kebahagiaan sederhana yang manis — setiap momen bersama penuh warna dan tawa.</p>
+  <div class="gallery">
+    <figure><img src="foto1.jpeg"><figcaption>Kejutan Manis</figcaption></figure>
+    <figure><img src="foto2.jpeg"><figcaption>Momen Bersama Teman-Teman</figcaption></figure>
+    <figure><img src="foto3.jpeg"><figcaption>Senyum & Kebersamaan</figcaption></figure>
   </div>
-  <div class="story">
-    <img src="photo2.jpeg" alt="Momen Bersama Teman-Teman">
-    <h3>Momen Bersama Teman-Teman 💛</h3>
-    <p>Dikelilingi sahabat yang selalu mendukung dan mendoakan kebahagiaan kami.</p>
-  </div>
-  <div class="story">
-    <img src="photo3.jpeg" alt="Senyum dan Kebersamaan">
-    <h3>Senyum & Kebersamaan 🌸</h3>
-    <p>Setiap tawa bersama mereka mengingatkan kami bahwa kebahagiaan terasa lebih indah saat dibagikan.</p>
-  </div>
-  <p class="thankyou">Terima kasih kepada semua sahabat yang selalu mendukung perjalanan cinta kami.</p>
+  <p>Terima kasih kepada semua sahabat yang selalu mendukung perjalanan cinta kami.</p>
 </section>
 
-<section class="info">
-  <h2>Informasi Acara</h2>
-  <p><strong>Akad & Resepsi:</strong><br>
-  Sabtu, 27 Desember 2025<br>
-  Pukul 08.00 - Selesai<br>
-  Gedung Serbaguna Dasan Lekong & Ranjang</p>
-
-  <p><strong>Nomor Rekening:</strong><br>
-  BCA 7255149768 a.n Farid</p>
-
-  <a class="rsvp" href="https://wa.me/6285792644772" target="_blank">Konfirmasi Kehadiran via WhatsApp</a>
+<section>
+  <h2>Hadiah & RSVP</h2>
+  <p>Nomor Rekening BCA: <strong>7255149768</strong></p>
+  <button onclick="window.open('https://wa.me/6285792644772','_blank')">Kirim Ucapan via WhatsApp</button>
 </section>
 
-<footer>
-  <p>Farid & Desi © 2025 | Terima kasih atas doa dan restunya 💛</p>
-</footer>
+<section>
+  <h2>Lokasi</h2>
+  <p><a href="https://maps.google.com" target="_blank">Lihat di Google Maps</a></p>
+</section>
+
+<footer>© 2025 Farid & Desi — Dengan cinta dan sakura yang mekar 🌸</footer>
+
+<audio id="bgm" src="music.mp3" autoplay loop></audio>
+
+<script>
+// Personal greeting
+const params = new URLSearchParams(window.location.search);
+const name = params.get('kpd');
+if(name){document.getElementById('guest').innerText = 'Kepada Yth. ' + name;}
+
+// Countdown
+const target = new Date("Dec 27, 2025 08:00:00").getTime();
+const timer = setInterval(()=>{
+  const now = new Date().getTime();
+  const diff = target - now;
+  if(diff<0){clearInterval(timer);document.getElementById('countdown').innerText="Hari Bahagia Telah Tiba!";return;}
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const min=Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById('countdown').innerText=`${days} hari ${hrs} jam ${min} menit lagi`;
+},1000);
+
+// Sakura effect
+function createSakura() {
+  const sakuraContainer = document.getElementById('sakura');
+  for (let i=0; i<20; i++) {
+    const petal = document.createElement('span');
+    const size = Math.random() * 10 + 5;
+    petal.style.width = `${size}px`;
+    petal.style.height = `${size}px`;
+    petal.style.left = `${Math.random()*100}%`;
+    petal.style.animationDuration = `${Math.random()*5+5}s`;
+    petal.style.background = 'rgba(255,182,193,0.8)';
+    sakuraContainer.appendChild(petal);
+  }
+}
+createSakura();
+</script>
 
 </body>
 </html>
